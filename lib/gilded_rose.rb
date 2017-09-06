@@ -10,11 +10,12 @@ class GildedRose
     # one big method, no comments...
     # good object oriented programming = clean code, easy to read, understand the variables.
 
-    for i in 0..(@items.size-1)
-      if (@items[i].name != "Aged Brie" && @items[i].name != "Backstage passes to a TAFKAL80ETC concert")
-        if (@items[i].quality > 0)
-          if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-            @items[i].quality = @items[i].quality - 1
+    # cleaning up the code:
+    @items.each do |item|
+      if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
+        if (item.quality > 0)
+          if (item.name != "Sulfuras, Hand of Ragnaros")
+            item.quality = item.quality - 1
           end
         end
       else
@@ -22,41 +23,41 @@ class GildedRose
         # iterate through the items
         # fix semicolons, setting to zero
         # how do we deal with new backstage passes, legendary, etc? no...it structures, not implements
-        if (@items[i].quality < 50)
-          @items[i].quality = @items[i].quality + 1
-          if (@items[i].name == "Backstage passes to a TAFKAL80ETC concert")
-            if (@items[i].sell_in < 11)
-              if (@items[i].quality < 50)
-                @items[i].quality = @items[i].quality + 1
+        if (item.quality < 50)
+          item.quality = item.quality + 1
+          if (item.name == "Backstage passes to a TAFKAL80ETC concert")
+            if (item.sell_in < 11)
+              if (item.quality < 50)
+                item.quality = item.quality + 1
               end
             end
-            if (@items[i].sell_in < 6)
-              if (@items[i].quality < 50)
-                @items[i].quality = @items[i].quality + 1
+            if (item.sell_in < 6)
+              if (item.quality < 50)
+                item.quality = item.quality + 1
               end
             end
           end
         end
       end
-      if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-        @items[i].sell_in = @items[i].sell_in - 1;
+      if (item.name != "Sulfuras, Hand of Ragnaros")
+        item.sell_in = item.sell_in - 1;
         # should be updating quality, not sell_in...
       end
-      if (@items[i].sell_in < 0)
-        if (@items[i].name != "Aged Brie")
-          if (@items[i].name != "Backstage passes to a TAFKAL80ETC concert")
-            if (@items[i].quality > 0)
-              if (@items[i].name != "Sulfuras, Hand of Ragnaros")
-                @items[i].quality = @items[i].quality - 1
+      if (item.sell_in < 0)
+        if (item.name != "Aged Brie")
+          if (item.name != "Backstage passes to a TAFKAL80ETC concert")
+            if (item.quality > 0)
+              if (item.name != "Sulfuras, Hand of Ragnaros")
+                item.quality = item.quality - 1
               end
             end
           else
             #setting quality to zero in a bad way
-            @items[i].quality = @items[i].quality - @items[i].quality
+            item.quality = item.quality - item.quality
           end
         else
-          if (@items[i].quality < 50)
-            @items[i].quality = @items[i].quality + 1
+          if (item.quality < 50)
+            item.quality = item.quality + 1
           end
         end
       end
