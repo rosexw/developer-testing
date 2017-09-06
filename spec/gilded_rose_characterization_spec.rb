@@ -20,12 +20,13 @@ def item_attributes
   item_attributes = [
     ['Mail Armour', 10, 20],
     ['Mail Armour', 10, 1],
-    ["+5 Dexterity Vest", 10, 20],
-    ["Elixir of the Mongoose", 5, 7],
+    ['+5 Dexterity Vest', 10, 20],
+    ['Elixir of the Mongoose', 5, 7],
     ['Aged Brie', 4, 9],
     ['Aged Brie', 1, 49],
     ['Backstage passes to a TAFKAL80ETC concert', 15, 17],
     ['Backstage passes to a TAFKAL80ETC concert', 5, 49],
+    #TODO: remove the -1 special value here.
     ['Sulfuras, Hand of Ragnaros', -1, 80]
   ]
 end
@@ -33,7 +34,7 @@ end
 def characterize(subject, days)
   characterization = []
 
-  (1..days).each_with_index do |day|
+  (1..days).each do |day|
     subject.update_quality
 
     characterization << "Day #{day} of #{days}"
