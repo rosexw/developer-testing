@@ -1,9 +1,9 @@
 class GildedRose
   attr_reader :items
 
-  def initialize item_attributes
+  def initialize(items)
     # *args means that if it's an array, it will pass off as an array. Then it works.
-    @items = item_attributes.map { |args| Item.new(*args) }
+    @items = items
   end
 
   def update_quality

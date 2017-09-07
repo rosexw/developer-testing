@@ -2,7 +2,10 @@ require 'rspec'
 require 'approvals/rspec'
 
 require_relative '../lib/gilded_rose'
-require_relative '../lib/item'
+require_relative '../lib/regular_item'
+require_relative '../lib/aged_item'
+require_relative '../lib/backstage_pass'
+require_relative '../lib/legendary_item'
 
 describe GildedRose do
 
@@ -18,16 +21,16 @@ private
 
 def item_attributes
   item_attributes = [
-    ['Mail Armour', 10, 20],
-    ['Mail Armour', 10, 1],
-    ['+5 Dexterity Vest', 10, 20],
-    ['Elixir of the Mongoose', 5, 7],
-    ['Aged Brie', 4, 9],
-    ['Aged Brie', 1, 49],
-    ['Backstage passes to a TAFKAL80ETC concert', 15, 17],
-    ['Backstage passes to a TAFKAL80ETC concert', 5, 49],
+    RegularItem.new('Mail Armour', 10, 20),
+    RegularItem.new('Mail Armour', 10, 1),
+    RegularItem.new('+5 Dexterity Vest', 10, 20),
+    RegularItem.new('Elixir of the Mongoose', 5, 7),
+    AgedItem.new('Aged Brie', 4, 9),
+    AgedItem.new('Aged Brie', 1, 49),
+    BackstagePass.new('Backstage passes to a TAFKAL80ETC concert', 15, 17),
+    BackstagePass.new('Backstage passes to a TAFKAL80ETC concert', 5, 49),
     #TODO: remove the -1 special value here.
-    ['Sulfuras, Hand of Ragnaros', -1, 80]
+    LegendaryItem.new('Sulfuras, Hand of Ragnaros', -1, 80)
   ]
 end
 
