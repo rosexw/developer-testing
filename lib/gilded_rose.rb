@@ -6,25 +6,22 @@ class GildedRose
     @items = items
   end
 
-  def update_quality
+
+  def age_one_day
     # one big method, no comments...
     # good object oriented programming = clean code, easy to read, understand the variables.
 
     # cleaning up the code:
     @items.each do |item|
       item.update_sell_in
-      #WTF? why are we updating sell in here? #update_quality
+      item.update_quality
 
-      # if (item.name != "Sulfuras, Hand of Ragnaros")
-      #   item.sell_in
-      # end
-
+      #deal with items that degrade in quality over time
       if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
-        if (item.quality > 0)
           if (item.name != "Sulfuras, Hand of Ragnaros")
-            item.quality = item.quality - 1
+            # can put a throw error in here, but not going to do that.
+            throw "OH NO!" unless item.class == RegularItem
           end
-        end
       else
         # increasing quantity by 2 in certain cases
         # iterate through the items
