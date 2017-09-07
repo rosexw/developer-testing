@@ -17,12 +17,12 @@ class GildedRose
       item.update_quality
 
       #deal with items that degrade in quality over time
-      if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
+      unless (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
           if (item.name != "Sulfuras, Hand of Ragnaros")
             # can put a throw error in here, but not going to do that.
             throw "OH NO!" unless item.class == RegularItem
           end
-      else
+
         # increasing quantity by 2 in certain cases
         # iterate through the items
         # fix semicolons, setting to zero
@@ -49,21 +49,19 @@ class GildedRose
       #sell_in update was here
       # items degrade faster or altogether after sell_in reaches 0
       if (item.sell_in < 0)
-        if (item.name != "Aged Brie")
           if (item.name != "Backstage passes to a TAFKAL80ETC concert")
-            if (item.quality > 0)
-              if (item.name != "Sulfuras, Hand of Ragnaros")
-                item.quality = item.quality - 1
-              end
-            end
+            # if (item.quality > 0)
+            #   if (item.name != "Sulfuras, Hand of Ragnaros")
+            #     throw "YUCK" unless item.class == RegularItem
+            #
+            #     item.quality = item.quality - 1
+            #   end
+            # end
           else
             # instead of subtracting item.quality from item.quality, set it to 0.
             item.quality = 0
           end
         else
-          if (item.quality < 50)
-            item.quality = item.quality + 1
-          end
         end
       end
     end
