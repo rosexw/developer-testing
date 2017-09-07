@@ -12,10 +12,12 @@ class GildedRose
 
     # cleaning up the code:
     @items.each do |item|
+      item.update_sell_in
       #WTF? why are we updating sell in here? #update_quality
-      if (item.name != "Sulfuras, Hand of Ragnaros")
-        item.sell_in = item.sell_in - 1;
-      end
+
+      # if (item.name != "Sulfuras, Hand of Ragnaros")
+      #   item.sell_in
+      # end
 
       if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
         if (item.quality > 0)
